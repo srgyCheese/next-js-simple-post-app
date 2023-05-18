@@ -1,5 +1,6 @@
 import '../styles/globals.css'
 import { Inter } from 'next/font/google'
+import { NextAuthProvider } from './providers'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -15,13 +16,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <main className="overflow-none flex h-screen justify-center py-10">
-          <div className="flex h-full w-full flex-col border rounded-xl border-slate-400 md:max-w-2xl">
-            {children}
-          </div>
-        </main>
-      </body>
+      <NextAuthProvider>
+        <body className={inter.className}>
+          <main className="overflow-none flex h-screen justify-center py-10">
+            <div className="flex h-full w-full flex-col border rounded-xl border-slate-400 md:max-w-2xl">
+              {children}
+            </div>
+          </main>
+        </body>
+      </NextAuthProvider>
     </html>
   )
 }
